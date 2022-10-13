@@ -4,7 +4,6 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  // passwordText.value = password;//this keeps returning errors, probably stopping my JS from working
   var password = generatePassword(); // this is the function we are creating
   var passwordText = document.querySelector("#password");
   passwordText.value = password;//this keeps returning errors, probably stopping my JS from working
@@ -29,20 +28,23 @@ var numeric = "123456789"
 var specChars = "~!@#$%^&*_+=><?/|.,"
 
 function generatePassword() 
-{
-  /////////////////////////// WRITE YOUR CODE HERE /////////////////////////
+{/////////////////////////// WRITE YOUR CODE HERE /////////////////////////
+  var lengthConfirm = prompt("How long would you like your password to be? (\nMinimum of 8 Characters and Maximum of 128 Characters)")
+  var lwrCaseConfirm = confirm("Would you like to include Lower Case letters?")
+  var uppCaseConfirm = confirm("Would you like to include Upper Case letters?")
+  var numericConfirm = confirm("Would you like to include numbers?")
+  var specCharsConfirm = confirm("Would you like to include Special Characters?")
 
-  var btnClicked = function ()
-  {confirm("would you like to generate a password");
 
-      if(confirm) {
-        prompt("Would you like to use Lower Case letters? Type yes or no")
-      }
+  var lwrCaseRNG = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+  var uppCaseRNG = upperCase[Math.floor(Math.random() * upperCase.length)];
+  var numericRNG = numeric[Math.floor(Math.random() * numeric.length)];
+  var specCharsRNG = specChars[Math.floor(Math.random() * specChars.length)];
+
+  if(lwrCaseConfirm){
+    
   }
 
-  btnClicked = document.getElementById("generate").onclick = function() { 
-    writePassword()
-  };
 }
   
   // document.getElementById("generate").innerHtml = prompt("Would you like to use lower case letters?");
@@ -70,4 +72,6 @@ return false;
 else
 { 
 return true;
+
+
 */
