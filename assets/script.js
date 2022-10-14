@@ -6,7 +6,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword(); // this is the function we are creating
   var passwordText = document.querySelector("#password");
-  passwordText.value = password;//this keeps returning errors, probably stopping my JS from working
+  passwordText.value = password;//this was @ line 7, moved it below the declaration of the variable to have it stop returning errors,which was preventing the code from running
 }
 
 // Add event listener to generate button
@@ -22,35 +22,72 @@ generateBtn.addEventListener("click", writePassword);
   4. generate a password @ random, within users specifications
   5. When password is generated, display to user, using alert or some kind of insertion through javascript
 */
-var lowerCase = "abcdefghijklmnopqrstuvwxyz" 
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var numeric = "123456789"
-var specChars = "~!@#$%^&*_+=><?/|.,"
+const lowerCase = "abcdefghijklmnopqrstuvwxyz" 
+const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const numeric = "123456789"
+const specChars = "~!@#$%^&*_+=><?/|.,"
 
 function generatePassword() 
 {/////////////////////////// WRITE YOUR CODE HERE /////////////////////////
-  var lengthConfirm = prompt("How long would you like your password to be? (\nMinimum of 8 Characters and Maximum of 128 Characters)")
-  var lwrCaseConfirm = confirm("Would you like to include Lower Case letters?")
-  var uppCaseConfirm = confirm("Would you like to include Upper Case letters?")
-  var numericConfirm = confirm("Would you like to include numbers?")
-  var specCharsConfirm = confirm("Would you like to include Special Characters?")
+// sets the minimum and maximum length for the password
+  const minLength = 8;
+  const maxLength = 128;
+// asks the user how many characters long they would like their password to be, and stores the input as a value for lengthConfirm
+  var lengthConfirm = prompt("How long would you like your password to be? \n(Minimum of 8 Characters and Maximum of 128 Characters)");
 
-
-  var lwrCaseRNG = lowerCase[Math.floor(Math.random() * lowerCase.length)];
-  var uppCaseRNG = upperCase[Math.floor(Math.random() * upperCase.length)];
-  var numericRNG = numeric[Math.floor(Math.random() * numeric.length)];
-  var specCharsRNG = specChars[Math.floor(Math.random() * specChars.length)];
-
-  if(lwrCaseConfirm){
-    
+// verifies the users number input should be between 8 and 128 characters, and returns a "try again" if false
+  if(lengthConfirm >= minLength && lengthConfirm <= maxLength){
+    console.log(lengthConfirm);
+  } else {
+    alert("Not a valid number, please try again!");
+    return;
   }
 
-}
-  
-  // document.getElementById("generate").innerHtml = prompt("Would you like to use lower case letters?");
+// lower case confirm and input
+// DO i need a function to run the confirm and inputs up to user input length?
+  var lwrCaseConfirm = confirm("Would you like to include Lower Case letters?");
+  if (lwrCaseConfirm) {
+    userLowCase = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+    console.log(userLowCase);                            
+  }
 
-// var btn = document.getElementsByClassName("btn");
-// btn.addEventListener("click", generatePassword);
+
+// upper case confirm and input
+
+  var uppCaseConfirm = confirm("Would you like to include Upper Case letters?");
+  if (uppCaseConfirm) {
+    userUppCase = upperCase[Math.floor(Math.random() * upperCase.length)];
+    console.log(userUppCase);
+  }
+
+
+// number case confirm and input
+
+  var numericConfirm = confirm("Would you like to include numbers?");
+  if (numericConfirm) {
+    userNumeric = numeric[Math.floor(Math.random() * numeric.length)];
+    console.log(userNumeric);
+  }
+
+
+// Symbols case confirm and input
+
+  var specCharsConfirm = confirm("Would you like to include Special Characters?");
+  if (specCharsConfirm) {
+    userSymbols = specChars[Math.floor(Math.random() * specChars.length)];
+    console.log(userSymbols);
+  }
+
+  //attempting to generate characters @ random until user input number is hit
+  
+  for (var i = 0; i <= lengthConfirm.length; i++ ) {
+    gennedPassword = [userLowCase + userNumeric + userUppCase + userSymbols];
+  }
+  alert("Your generated password is: " + gennedPassword); // acceptable for the criteria but would be nice to get it into the box
+  console.log(gennedPassword)
+}
+
+// document.write(password).innerHtml = "#password" //might work for inputting generated password into readOnly textArea?
 
 /*
   prompt?
@@ -58,20 +95,9 @@ function generatePassword()
   confirm?
 */
 
-/* Length checker
-function stringLengthCheck(name, minlength, maxlength)
-{
-var mnlen = minlength;
-var mxlen = maxlength;
- 
-if(name.value.length<mnlen || name.value.length> mxlen)
-{ 
-alert("Name should be " +mnlen+ " to " +mxlen+ " characters.");
-return false;
-}
-else
-{ 
-return true;
+// not needed now, code was cleaned up \/
+  // var lwrCaseRNG = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+  // var uppCaseRNG = upperCase[Math.floor(Math.random() * upperCase.length)];
+  // var numericRNG = numeric[Math.floor(Math.random() * numeric.length)];
+  // var specCharsRNG = specChars[Math.floor(Math.random() * specChars.length)];
 
-
-*/
