@@ -33,7 +33,8 @@ function generatePassword()
   const minLength = 8;
   const maxLength = 128;
 // asks the user how many characters long they would like their password to be, and stores the input as a value for lengthConfirm
-  var lengthConfirm = prompt("How long would you like your password to be? \n(Minimum of 8 Characters and Maximum of 128 Characters)");
+  var lengthConfirm = prompt("How long would you like your password to be? \n(Minimum of 8 Characters and Maximum of 128 Characters)"); 
+// when user enters valid number in prompt, it will store the value in the variable ^
 
 // verifies the users number input should be between 8 and 128 characters, and returns a "try again" if false
   if(lengthConfirm >= minLength && lengthConfirm <= maxLength){
@@ -43,61 +44,53 @@ function generatePassword()
     return;
   }
 
-// lower case confirm and input
-// DO i need a function to run the confirm and inputs up to user input length?
-  var lwrCaseConfirm = confirm("Would you like to include Lower Case letters?");
-  if (lwrCaseConfirm) {
-    userLowCase = lowerCase[Math.floor(Math.random() * lowerCase.length)];
-    console.log(userLowCase);                            
-  }
+  let userChoices = "";
 
+// lower case confirm and input
+
+  var lwrCaseConfirm = confirm("Would you like to include Lower Case letters?")
+  if (lwrCaseConfirm) {
+    userChoices += lowerCase;
+    console.log(userChoices);
+  }
 
 // upper case confirm and input
 
   var uppCaseConfirm = confirm("Would you like to include Upper Case letters?");
   if (uppCaseConfirm) {
-    userUppCase = upperCase[Math.floor(Math.random() * upperCase.length)];
-    console.log(userUppCase);
+    userChoices += upperCase;
+    console.log(userChoices);
   }
-
 
 // number case confirm and input
 
   var numericConfirm = confirm("Would you like to include numbers?");
   if (numericConfirm) {
-    userNumeric = numeric[Math.floor(Math.random() * numeric.length)];
-    console.log(userNumeric);
+    userChoices += numeric;
+    console.log(userChoices);
   }
-
 
 // Symbols case confirm and input
 
   var specCharsConfirm = confirm("Would you like to include Special Characters?");
   if (specCharsConfirm) {
-    userSymbols = specChars[Math.floor(Math.random() * specChars.length)];
-    console.log(userSymbols);
+    // userChoices += specChars[Math.floor(Math.random() * specChars.length)]
+    // the math.random was only pulling 1 piece out of the string. Objective is to aquire the whole string for randomization
+    //should look like this \/
+    userChoices += specChars;
+    console.log(userChoices);
   }
 
   //attempting to generate characters @ random until user input number is hit
   
-  for (var i = 0; i <= lengthConfirm.length; i++ ) {
-    gennedPassword = [userLowCase + userNumeric + userUppCase + userSymbols];
+  for (var i = 0; i < lengthConfirm; i++ ) { // dropped the = from <= and .length from lengthConfirm.length on this line
+    let password = " "
+    
+    password += userChoices[Math.floor(Math.random() * userChoices.length)]; // the line will only return 1 character at a time vs my objective of getting it in user input desired length
+    // console.log(userChoices)
+    alert("Your generated password is: " + password); // acceptable for the criteria but would be nice to get it into the box  
+    console.log(password);
   }
-  alert("Your generated password is: " + gennedPassword); // acceptable for the criteria but would be nice to get it into the box
-  console.log(gennedPassword)
 }
 
 // document.write(password).innerHtml = "#password" //might work for inputting generated password into readOnly textArea?
-
-/*
-  prompt?
-  alert?
-  confirm?
-*/
-
-// not needed now, code was cleaned up \/
-  // var lwrCaseRNG = lowerCase[Math.floor(Math.random() * lowerCase.length)];
-  // var uppCaseRNG = upperCase[Math.floor(Math.random() * upperCase.length)];
-  // var numericRNG = numeric[Math.floor(Math.random() * numeric.length)];
-  // var specCharsRNG = specChars[Math.floor(Math.random() * specChars.length)];
-
