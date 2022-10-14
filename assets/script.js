@@ -82,15 +82,14 @@ function generatePassword()
   }
 
   //attempting to generate characters @ random until user input number is hit
-  
+  let gennedPassword = " "
   for (var i = 0; i < lengthConfirm; i++ ) { // dropped the = from <= and .length from lengthConfirm.length on this line
-    let password = " "
     
-    password += userChoices[Math.floor(Math.random() * userChoices.length)]; // the line will only return 1 character at a time vs my objective of getting it in user input desired length
+    
+    gennedPassword += userChoices[Math.floor(Math.random() * userChoices.length)]; // the line will only return 1 character at a time vs my objective of getting it in user input desired length
     // console.log(userChoices)
-    alert("Your generated password is: " + password); // acceptable for the criteria but would be nice to get it into the box  
-    console.log(password);
+    // alert("Your generated password is: " + password); // acceptable for the criteria but would be nice to get it into the box  
+    console.log(gennedPassword);
   }
+  return gennedPassword;
 }
-
-// document.write(password).innerHtml = "#password" //might work for inputting generated password into readOnly textArea?
